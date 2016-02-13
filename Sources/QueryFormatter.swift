@@ -109,8 +109,9 @@ public struct QueryFormatter {
         
         // format ??
         while true {
-            let r1 = formatted.rangeOfString("??", options: [], range: scanRange, locale: nil)
-            let r2 = formatted.rangeOfString("?", options: [], range: scanRange, locale: nil)
+            let substring = formatted.substringWithRange(scanRange)
+            let r1 = substring.rangeOfString("??")
+            let r2 = substring.rangeOfString("?")
             let r: Range<String.Index>
             if let r1 = r1, let r2 = r2 {
                 r = r1.startIndex <= r2.startIndex ? r1 : r2
